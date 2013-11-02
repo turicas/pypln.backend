@@ -27,11 +27,18 @@ from pypelinin import Worker
 BASE_PATH = '/opt/palavras'
 NOUNPHRASE_SCRIPT = 'bin/extract_np.pl'
 
+def palavras_installed():
+    return os.path.exists(os.path.join(BASE_PATH, NOUNPHRASE_SCRIPT))
+
+
 class NounPhrase(Worker):
     """Noun phrase extractor"""
     requires = ['palavras_raw']
 
     def process(self, document):
+        if not palavras_installed():
+            return {}
+
         nounphrase_script = os.path.join(BASE_PATH, NOUNPHRASE_SCRIPT)
         process = subprocess.Popen(nounphrase_script, stdin=subprocess.PIPE,
                                    stdout=subprocess.PIPE,

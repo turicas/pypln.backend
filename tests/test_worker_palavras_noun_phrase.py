@@ -22,11 +22,15 @@ import unittest
 from textwrap import dedent
 
 from pypln.backend.workers import NounPhrase
+from pypln.backend.workers.palavras_noun_phrase import palavras_installed
 
 
 class TestNounPhraseWorker(unittest.TestCase):
 
     def test_noun_phrase_worker_should_return_a_list_with_phrases(self):
+        if not palavras_installed():
+            self.skipTest('Palavras is not installed.')
+
         palavras_output = dedent('''
         Eu\t[eu] <*> PERS M/F 1S NOM @SUBJ>  #1->2
         sei\t[saber] <fmc> <mv> V PR 1S IND VFIN @FS-STA  #2->0

@@ -42,6 +42,9 @@ class TestPalavrasRawWorker(unittest.TestCase):
 
 
     def test_palavras_should_return_raw_if_it_is_installed(self):
+        if not palavras_raw.palavras_installed():
+            self.skipTest('Palavras is not installed.')
+
         palavras_raw.BASE_PARSER = ORIGINAL_PATH
         document = {'text': 'Eu sei que neste momento falo para todo Brasil.',
                     'language': 'pt'}
