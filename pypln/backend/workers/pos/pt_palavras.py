@@ -21,7 +21,7 @@ import os
 import subprocess
 import sys
 
-PALAVRAS_ENCODING = sys.getfilesystemencoding()
+
 WORD_CLASSES = {
                 'N': 'Nouns',
                 'PROP': 'Proper nouns',
@@ -50,7 +50,7 @@ def pos(document):
     palavras_output = document['palavras_raw']
     tagged_text = []
     for line in palavras_output.split('\n'):
-        line = line.strip().decode(PALAVRAS_ENCODING)
+        line = line.strip()
         if line.isspace() or line == '':
             continue
         elif line.startswith('<'):

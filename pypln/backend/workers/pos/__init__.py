@@ -21,15 +21,12 @@ from pypelinin import Worker
 
 import en_nltk
 import pt_palavras
-from pypln.backend.workers.palavras_raw import palavras_installed
 
 
 MAPPING = {
            'en': en_nltk.pos,
            'pt': pt_palavras.pos,
 }
-if not palavras_installed():
-    del(MAPPING['pt'])
 
 def put_offset(text, tagged_text):
     result = []
@@ -39,6 +36,7 @@ def put_offset(text, tagged_text):
         result.append((token, classification, token_position))
         position = token_position + len(token) - 1
     return result
+
 
 class POS(Worker):
     requires = ['text', 'tokens', 'language', 'palavras_raw']
