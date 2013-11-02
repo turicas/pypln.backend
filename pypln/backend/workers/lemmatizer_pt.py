@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with PyPLN.  If not, see <http://www.gnu.org/licenses/>.
 
-import subprocess
 from pypelinin import Worker
+
 
 class Lemmatizer(Worker):
     """Lemmatizer"""
@@ -26,7 +26,6 @@ class Lemmatizer(Worker):
     requires = ['palavras_raw']
 
     def process(self, document):
-
         lines = document['palavras_raw'].split('\n')
         lemmas = []
         for line in lines:
