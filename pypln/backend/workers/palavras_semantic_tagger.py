@@ -17,10 +17,10 @@
 # You should have received a copy of the GNU General Public License
 # along with PyPLN.  If not, see <http://www.gnu.org/licenses/>.
 
-
-import subprocess
-from pypelinin import Worker
 import re
+
+from pypelinin import Worker
+
 
 SEMANTIC_TAGS = \
 {
@@ -404,8 +404,8 @@ SEMANTIC_TAGS = \
         },
 }
 
-
 angle_brackets_contents = re.compile('(<[a-zA-Z]*>)')
+
 
 class SemanticTagger(Worker):
     """Semantic Tagger"""
